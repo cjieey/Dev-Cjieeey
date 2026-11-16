@@ -210,6 +210,34 @@ img,svg{max-width:100%}
 .hero2 .hero-name{white-space:normal}
 .hanko{width:28px !important;height:42px !important;font-size:12px !important}
 }
+/* ---------- phone layout ---------- */
+html,body{overflow-x:clip}
+@media (max-width:640px){
+.site-header nav{padding:10px 16px !important;gap:8px !important;flex-wrap:nowrap !important}
+.site-header nav a[href="#top"] > span > span:last-child{display:none}
+.site-header nav a[href="#contact"]{padding:0 16px !important;font-size:14px !important;min-height:40px !important}
+.hero-screen{min-height:0 !important;padding-top:62px !important}
+.hero2,.hero2 .hero-name,.hero-stats,.jp-fuji,.jp-tree,.jp-branch,.dz-main > section,.dz-main .panel,.dz-main .fan,.dz-main .kb-stage{animation:none !important}
+.hero2{padding:14px 16px 28px !important;gap:24px !important}
+.hero2 .hero-name{font-size:36px !important}
+.hero2 .bio{font-size:15px !important;line-height:1.9 !important}
+.hero2 .id-photo{height:200px !important}
+.hero-pet{padding:0 0 28px 28px !important}
+.jp-fuji{width:520px !important;bottom:140px !important;opacity:0.3 !important;transform:translateX(-50%) !important}
+.dark-zone::before{height:56px}
+.dz-grid{padding:0 16px;gap:16px}
+.dz-main > section{padding:20px 0 40px !important;min-height:0 !important}
+.dz-main > section h2{font-size:30px !important}
+.dz-main .fan{overflow:hidden;height:540px !important}
+.dz-main .fan-card{width:calc(100% - 12px) !important}
+.dz-main .kb-stage{padding:8px 0 16px !important;perspective:none}
+.dz-main .kb-board{transform:none !important;max-width:none !important;padding:14px !important}
+.kb-grid{grid-template-columns:repeat(5,minmax(0,1fr)) !important;gap:8px !important}
+.key-label{font-size:8px !important}
+.mq-pill{padding:10px 16px;font-size:14px}
+#contact > div:first-child{padding:56px 16px 220px !important}
+.wf-wrap > div:first-child > span:first-child{font-size:11px !important;letter-spacing:0.1em !important}
+}
 </style>
 </head>
 <body>
