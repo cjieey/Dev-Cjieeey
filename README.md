@@ -9,7 +9,7 @@ No build step is needed: Vercel serves the files as they are.
 index.html          the page (fonts and styles)
 app.js              the page's content and interactions
 vendor/             React 18 (bundled, so the site has no outside script dependencies)
-assets/             images: photo, ID cut-out, Mount Fuji, sakura, app icons, Grok logo
+assets/             images: photo, ID cut-out, hero scenery, Mayon Volcano, coconut palm, app icons, Grok logo
 api/contact.js      POST /api/contact: emails you, then auto-replies to the visitor (Gmail SMTP)
 package.json        tells Vercel to install nodemailer for the function
 ```
