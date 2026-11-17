@@ -273,6 +273,48 @@ img,svg{max-width:100%}
 .site-header.dark .brand-logo .logo-d{opacity:0}
 .site-header.dark .brand-logo .logo-l{opacity:1 !important}
 @media (max-width:640px){.brand-logo{width:30px !important;height:34px !important}}
+/* loading screen */
+.loader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(120% 90% at 50% 110%,#123A7A 0%,#071A3A 45%,#05070D 100%);color:#FFFFFF;transition:opacity .7s ease,visibility .7s ease,transform .7s ease}
+.loader.is-out{opacity:0;visibility:hidden;transform:scale(1.04);pointer-events:none}
+.ld-rays{position:absolute;left:50%;top:50%;width:1400px;height:1400px;margin:-700px 0 0 -700px;background:repeating-conic-gradient(from 0deg,rgba(252,209,22,0.035) 0deg 5deg,rgba(252,209,22,0) 5deg 22.5deg);-webkit-mask-image:radial-gradient(circle,#000 0%,rgba(0,0,0,0.5) 30%,transparent 62%);mask-image:radial-gradient(circle,#000 0%,rgba(0,0,0,0.5) 30%,transparent 62%);animation:ldspin 28s linear infinite}
+@keyframes ldspin{to{transform:rotate(360deg)}}
+.ld-box{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 24px}
+.ld-logo-wrap{position:relative;width:84px;height:96px;margin-bottom:22px;animation:ldfloat 2.6s ease-in-out infinite}
+.ld-logo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;clip-path:inset(100% 0 0 0);animation:ldreveal .9s cubic-bezier(.65,0,.35,1) .1s forwards}
+.ld-logo-ghost{opacity:0.14;clip-path:none;animation:none}
+@keyframes ldreveal{to{clip-path:inset(0 0 0 0)}}
+@keyframes ldfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.ld-name{font-family:'Jost','Zen Kaku Gothic New',sans-serif;font-style:italic;font-weight:800;font-size:26px;letter-spacing:-0.01em;opacity:0;transform:translateY(8px);animation:ldup .6s ease .45s forwards}
+.ld-sub{margin-top:4px;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.62);opacity:0;transform:translateY(8px);animation:ldup .6s ease .6s forwards}
+@keyframes ldup{to{opacity:1;transform:none}}
+.ld-bar{position:relative;width:200px;height:4px;margin-top:26px;border-radius:4px;background:rgba(255,255,255,0.12);overflow:hidden}
+.ld-bar span{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#0038A8 0 33.3%,#FCD116 33.3% 66.6%,#CE1126 66.6% 100%);animation:ldfill 1.9s cubic-bezier(.4,0,.2,1) .2s forwards}
+@keyframes ldfill{0%{transform:scaleX(0)}60%{transform:scaleX(.72)}100%{transform:scaleX(1)}}
+.ld-note{margin-top:12px;font-size:12px;color:rgba(255,255,255,0.5)}
+@media (prefers-reduced-motion: reduce){.ld-rays,.ld-logo-wrap{animation:none}.ld-logo{clip-path:none;animation:none}.ld-name,.ld-sub{opacity:1;transform:none;animation:none}.ld-bar span{animation:none;transform:scaleX(1)}}
+/* workflow loader */
+.ld-logo-wrap{width:60px !important;height:69px !important;margin-bottom:16px !important}
+.ld-flow{display:flex;align-items:flex-start;margin-top:30px}
+.ld-node{display:flex;flex-direction:column;align-items:center;gap:9px;width:66px}
+.ld-node .nd{position:relative;width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14);color:rgba(255,255,255,0.35);animation:ndon .45s ease forwards;animation-delay:var(--d)}
+@keyframes ndon{50%{transform:scale(1.08)}to{transform:scale(1);background:rgba(255,255,255,0.12);border-color:rgba(252,209,22,0.85);color:#FFFFFF;box-shadow:0 0 0 4px rgba(252,209,22,0.12),0 0 24px rgba(252,209,22,0.3)}}
+.ld-node .ok{position:absolute;right:-6px;top:-6px;width:18px;height:18px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 2px #071A3A;display:flex;align-items:center;justify-content:center;transform:scale(0);animation:okpop .32s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:calc(var(--d) + .3s)}
+@keyframes okpop{to{transform:scale(1)}}
+.ld-node small{font-size:11px;letter-spacing:0.04em;color:rgba(255,255,255,0.4);animation:lbon .3s ease forwards;animation-delay:var(--d)}
+@keyframes lbon{to{color:rgba(255,255,255,0.9)}}
+.ld-edge{position:relative;flex:0 0 26px;height:2px;margin-top:23px;border-radius:2px;background:rgba(255,255,255,0.14);overflow:hidden}
+.ld-edge::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#0038A8,#FCD116 60%,#CE1126);transform:scaleX(0);transform-origin:left;animation:edfill .3s ease-out forwards;animation-delay:var(--d)}
+.ld-edge::after{content:'';position:absolute;top:0;left:-10px;width:10px;height:2px;border-radius:2px;background:#FFFFFF;box-shadow:0 0 8px #FFFFFF;opacity:0;animation:edpulse 1s linear infinite;animation-delay:calc(var(--d) + .3s)}
+@keyframes edfill{to{transform:scaleX(1)}}
+@keyframes edpulse{0%{opacity:1;left:-10px}100%{opacity:1;left:100%}}
+.ld-status{position:relative;width:280px;height:18px;margin-top:22px;font-size:12.5px}
+.ld-status span{position:absolute;inset:0;text-align:center}
+.st-run{color:rgba(255,255,255,0.55);animation:stout .3s ease 2.05s forwards}
+.st-done{color:#FCD116;opacity:0;transform:translateY(6px);animation:stin .35s ease 2.1s forwards}
+@keyframes stout{to{opacity:0;transform:translateY(-6px)}}
+@keyframes stin{to{opacity:1;transform:none}}
+@media (max-width:640px){.ld-node{width:54px}.ld-node .nd{width:42px;height:42px;border-radius:12px}.ld-edge{flex-basis:14px;margin-top:20px}.ld-node small{font-size:10px}}
+@media (prefers-reduced-motion: reduce){.ld-node .nd,.ld-node small,.ld-edge::before,.ld-node .ok,.st-run,.st-done{animation-duration:.01s !important;animation-delay:0s !important}.ld-edge::after{animation:none}}
 /* liquid glass header */
 .site-header{top:12px !important;left:16px !important;right:16px !important;max-width:1180px;margin:0 auto;border-radius:24px;border:1px solid rgba(255,255,255,0.55) !important;background:linear-gradient(135deg,rgba(255,255,255,0.34) 0%,rgba(255,255,255,0.12) 45%,rgba(255,255,255,0.22) 100%) !important;-webkit-backdrop-filter:blur(5px) saturate(190%) brightness(1.05) !important;backdrop-filter:blur(5px) saturate(190%) brightness(1.05) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,0.85),inset 0 -1px 0 rgba(255,255,255,0.25),inset 0 0 22px rgba(255,255,255,0.18),0 10px 34px rgba(12,32,70,0.16) !important;transition:background .35s ease,border-color .35s ease,box-shadow .35s ease}
 .site-header::before{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(120% 140% at 12% -30%,rgba(255,255,255,0.55),rgba(255,255,255,0) 55%),radial-gradient(90% 120% at 100% 130%,rgba(173,205,255,0.25),rgba(255,255,255,0) 60%)}
@@ -322,7 +364,7 @@ html,body{overflow-x:clip}
 </style>
 </head>
 <body>
-<div id="root"></div>
+<div id="root"><div style="position:fixed;inset:0;background:radial-gradient(120% 90% at 50% 110%,#123A7A 0%,#071A3A 45%,#05070D 100%)"></div></div>
 <noscript>This portfolio needs JavaScript turned on.</noscript>
 <script src="vendor/react.production.min.js"></script>
 <script src="vendor/react-dom.production.min.js"></script>
